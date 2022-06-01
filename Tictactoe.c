@@ -128,3 +128,10 @@ void drawBoard()
 
     return;
 }
+
+/*int checkWIn()
+{
+
+
+
+    return 0;
