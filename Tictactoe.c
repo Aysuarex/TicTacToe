@@ -40,26 +40,22 @@ int main()
     }
 
     Next: //Reference Point
-    //turn = 0;
     turn++;
     turn= (turn % 2);
-
-    if(turn == 0)
-        player = 2;
-    else
+    if(turn == 1)
         player = 1;
+    else
+        player = 2;
 
-    //drawBoard();
 
     Position: //Reference Point
     drawBoard();
     Sleep(800);
-
     printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
     scanf("%d", &choice);
     if(choice==1 && position[0]=='1')
         position[0] = mark;
-    else if(choice==2 && position[1]=='2')
+    else if(choice ==2 && position[1] =='2')
         position[1] = mark;
     else if(choice ==3 && position[2] == '3')
         position[2] = mark;
@@ -77,7 +73,7 @@ int main()
         position[8] = mark;
     else {
         printf("ERROR! Invalid Option\n");
-        --turn;
+        turn--;
         goto Position;
     }
     //drawBoard();
