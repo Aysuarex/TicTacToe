@@ -32,3 +32,22 @@ int main()
         printf("Player_1 = X\nPlayer_2 = O\n");
         //player1= 'X';
         
+    else if (mark == 'O' || mark== 'o')
+        printf("Player_1 = O\nPlayer_2 = X\n");
+    else {
+        printf("ERROR! Enter invalid Choice\n\n");
+        goto Mark;
+    }
+
+    Next: //Reference Point
+    //turn = 0;
+    turn++;
+    turn= (turn % 2);
+
+    if(turn == 0)
+        player = 2;
+    else
+        player = 1;
+
+    //drawBoard();
+}*/
