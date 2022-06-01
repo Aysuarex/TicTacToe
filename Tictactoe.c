@@ -89,3 +89,13 @@ int main()
 void drawBoard()
 {
     printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[0], position[1], position[2]);
+    printf("\t\t\t\t\t\t______|______|______\n");
+    printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[3], position[4], position[5]);
+    printf("\t\t\t\t\t\t______|______|______\n");
+    printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[6], position[7], position[8]);
+    printf("\t\t\t\t\t\t      |      |      \n");
+
+ 
