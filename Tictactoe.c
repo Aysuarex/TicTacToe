@@ -51,3 +51,21 @@ int main()
 
     //drawBoard();
 }*/
+
+    Position: //Reference Point
+    drawBoard();
+    Sleep(800);
+
+    printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
+    scanf("%d", &choice);
+    if(choice==1 && position[0]=='1')
+        position[0] = mark;
+    else if(choice==2 && position[1]=='2')
+        position[1] = mark;
+    else if(choice ==3 && position[2] == '3')
+        position[2] = mark;
+    else if (choice ==4 && position[3] == '4')
+        position[3] = mark;
+    else if (choice ==5 && position[4] == '5')
+        position[4] = mark;
+   
