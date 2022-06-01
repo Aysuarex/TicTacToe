@@ -21,4 +21,14 @@ int main()
     Sleep(800);
     drawBoard();
 
-   
+ Sleep(1000);
+    Mark: //Reference Point
+    
+    printf("-----------------------------------------------\n");
+    printf("Player_1, Enter a choice (X or O): \n\t");
+    scanf("%s", &mark);
+    
+    if (mark== 'X' || mark== 'x')
+        printf("Player_1 = X\nPlayer_2 = O\n");
+        //player1= 'X';
+        
