@@ -48,6 +48,9 @@ int main()
         player = 2;
 
 
+
+    //AY, Remember to create another function that changes the mark to uppercase if it's presently in the lowercase. That is, 'x' becomes 'X'
+
     Position: //Reference Point
     drawBoard();
     Sleep(800);
