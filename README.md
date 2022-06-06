@@ -1,4 +1,4 @@
-# TicTacToe  ❌&⭕
+# TicTacToe  ❌/⭕
 
 # STILL IN PROGRESS: NOT YET COMPLETED! ⛑️ 🔨
 
