@@ -111,6 +111,7 @@ int main()
     checkWin();
     if (checkWin() == 0)
     {
+        drawBoard();
         printf("==> Game Draw \n\n\n");
         Sleep(500);
 
