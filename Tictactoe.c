@@ -31,7 +31,7 @@ int main()
 
 
     system("cls");
-    printf("Welcome to TICTACTOE!\n");
+    printf("==========================\nWelcome to TICTACTOE!\n");
     Sleep(800);
     drawBoard();
 
@@ -47,7 +47,6 @@ int main()
         mark_1 = 'X';
         mark_2 = 'O';
         printf("Player_1 = X\nPlayer_2 = O\n");
-        //player1= 'X';
     }   
     else if (mark == 'O' || mark== 'o') {
         mark_1 = 'O'; 
@@ -60,11 +59,7 @@ int main()
         goto Mark;
     }
 
-    //Turn: //Reference 
-      //  turn = 1;
-
     Next: //Reference Point
-    //unsigned int turn = 1;
     turn++;
     turn= (turn % 2);
     if(turn == 1)
@@ -72,9 +67,7 @@ int main()
     else
         player = 2;
 
-    //AY, Remember to create another function that changes the mark to uppercase if it's presently in the lowercase. That is, 'x' becomes 'X'
     Position: //Reference Point
-    
     drawBoard();
     Sleep(500);
     printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
@@ -105,14 +98,13 @@ int main()
     else {
         printf("ERROR! Invalid Option\n");
         turn--;
-        //goto Position;
     }
     checkWin();
     if (checkWin() == 0)
     {
         printf("==> Game Draw \n\n\n");
         Sleep(500);
-        //exit(0);
+
         Replay:
         printf("Do you want to play again(Y/N)?  ");
         scanf("%s", &replay);
@@ -149,13 +141,7 @@ int main()
             Sleep(500);
             goto Replay;
         }
-            //printf("");
-            //printf("\n);
     }
-    //else if (checkWin() == -1)
-        //continue;
-    
-    //drawBoard();
     goto Next;
     return 0;
 }
