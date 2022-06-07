@@ -80,15 +80,19 @@ int main()
     else {
         printf("ERROR! Invalid Option\n");
         turn--;
-        if (checkWin() == 0)
-            printf("Draw");
-            goto Mark: 
-        if (checkWin() == 1)
-            printf("Winner");
-        if (checkWin() == -1)
-            //printf("Continue")
-            goto Position;
+        //goto Position;
     }
+    checkWin();
+    if (checkWin() == 0)
+    {
+        printf("Draw");
+        //goto Mark; 
+    }
+    else if (checkWin() == 1)
+            printf("Winner");
+    else if (checkWin() == -1)
+            //printf("Continue")
+    
     
     //drawBoard();
     goto Next;
