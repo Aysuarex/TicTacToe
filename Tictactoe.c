@@ -10,9 +10,8 @@ int turn;
 
 int main()
 {
-    char mark;
-    int mark_1;
-    int mark_2;
+    char mark, mark_1, mark_2;
+    int replay;
     int choice;
     int player;
     int Player_1, Player_2;
@@ -105,10 +104,23 @@ int main()
     else if (checkWin() == 1)   {
             printf("\n\n\n==> Player_%d won!\n\n", player--);
             Sleep(500);
-            exit(0);
-            //turn = 1;
+            //exit(0);
+            Replay
+            printf("Do you want to play again(Y/N)?  ");
+            scanf("%s", &replay);
+            
+            if (replay = 'Y' || replay = 'y')
+                goto Start;
+            else if (replay = 'N' || replay = 'n')
+                printf("\nGame Over!\n");
+                exit(0);
+            else
+                printf("ERROR!\nPress Y for Yes\nPress N for No\n");
+
+            //printf("");
+            //printf("\n);
     }
-    else if (checkWin() == -1)
+    //else if (checkWin() == -1)
         //continue;
     
     
