@@ -11,7 +11,7 @@ int turn;
 int main()
 {
     char mark, mark_1, mark_2;
-    int replay;
+    char replay;
     int choice;
     int player;
     int Player_1, Player_2;
@@ -19,6 +19,17 @@ int main()
 
 
     Start:
+    position[0]= '1';
+    position[1]= '2';
+    position[2]= '3';
+    position[3]= '4';
+    position[4]= '5';
+    position[5]= '6';
+    position[6]= '7';
+    position[7]= '8';
+    position[8]= '9';
+
+
     system("cls");
     printf("Welcome to TICTACTOE!\n");
     Sleep(800);
@@ -64,7 +75,7 @@ int main()
     Position: //Reference Point
     
     drawBoard();
-    Sleep(800);
+    Sleep(500);
     printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
     scanf("%d", &choice);
     if(player == 1) 
@@ -102,21 +113,26 @@ int main()
         goto Mark; 
     }
     else if (checkWin() == 1)   {
-            printf("\n\n\n==> Player_%d won!\n\n", player--);
+        drawBoard();
+        printf("\n\n\n==> Player_%d won!\n\n", player--);
+        Sleep(500);
+        //exit(0);
+        Replay:
+        printf("Do you want to play again(Y/N)?  ");
+        scanf("%s", &replay);
+        
+        if (replay == 'Y' || replay == 'y') {
+            goto Start;
+        }
+        else if (replay == 'N' || replay == 'n') {
+            printf("\nGame Over!\n");
+            exit(0);
+        }
+        else {
+            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
             Sleep(500);
-            //exit(0);
-            Replay
-            printf("Do you want to play again(Y/N)?  ");
-            scanf("%s", &replay);
-            
-            if (replay = 'Y' || replay = 'y')
-                goto Start;
-            else if (replay = 'N' || replay = 'n')
-                printf("\nGame Over!\n");
-                exit(0);
-            else
-                printf("ERROR!\nPress Y for Yes\nPress N for No\n");
-
+            goto Replay;
+        }
             //printf("");
             //printf("\n);
     }
