@@ -1,3 +1,12 @@
+/**
+ * @file Tictactoe.c
+ * @author your name (you@domain.com)
+ * 
+ * @brief A two-player game of Tictactoe between two people, taking turns
+ * 
+ * @date 2022-06-07
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
