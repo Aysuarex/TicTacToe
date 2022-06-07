@@ -18,7 +18,7 @@ int main()
     unsigned int turn = 1;
 
 
-    Start:
+    Start: //Reference Point
     position[0]= '1';
     position[1]= '2';
     position[2]= '3';
@@ -56,6 +56,7 @@ int main()
     }
     else {
         printf("ERROR! Enter invalid Choice\n\n");
+        Sleep(500);
         goto Mark;
     }
 
@@ -110,14 +111,29 @@ int main()
     if (checkWin() == 0)
     {
         printf("==> Game Draw \n\n\n");
-        goto Mark; 
+        Sleep(500);
+        //exit(0);
+        Replay:
+        printf("Do you want to play again(Y/N)?  ");
+        scanf("%s", &replay);
+        
+        if (replay == 'Y' || replay == 'y') {
+            goto Start;
+        }
+        else if (replay == 'N' || replay == 'n') {
+            printf("\nGame Over!\n");
+            exit(0);
+        }  else {
+            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
+            Sleep(500);
+            goto Replay;
+        }
     }
     else if (checkWin() == 1)   {
         drawBoard();
         printf("\n\n\n==> Player_%d won!\n\n", player--);
         Sleep(500);
-        //exit(0);
-        Replay:
+        
         printf("Do you want to play again(Y/N)?  ");
         scanf("%s", &replay);
         
