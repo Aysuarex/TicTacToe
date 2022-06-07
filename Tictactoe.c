@@ -11,6 +11,8 @@ int turn;
 int main()
 {
     char mark;
+    int mark_1;
+    int mark_2;
     int choice;
     int player;
     int Player_1, Player_2;
@@ -30,12 +32,14 @@ int main()
     
     if (mark== 'X' || mark== 'x')
     {
-        mark = 'X';
+        mark_1 = 'X';
+        mark_2 = 'O';
         printf("Player_1 = X\nPlayer_2 = O\n");
         //player1= 'X';
     }   
     else if (mark == 'O' || mark== 'o') {
-        mark = 'O';
+        mark_1 = 'O'; 
+        mark_2= 'X';
         printf("Player_1 = O\nPlayer_2 = X\n");
     }
     else {
@@ -51,14 +55,18 @@ int main()
     else
         player = 2;
 
-
     //AY, Remember to create another function that changes the mark to uppercase if it's presently in the lowercase. That is, 'x' becomes 'X'
-
     Position: //Reference Point
+    
     drawBoard();
     Sleep(800);
     printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
     scanf("%d", &choice);
+    if(player == 1) 
+        mark = mark_1;
+    else
+        mark = mark_2;
+    //mark = (player ==1) ? 'X' :'O'
     if(choice==1 && position[0]=='1')
         position[0] = mark;
     else if(choice ==2 && position[1] =='2')
@@ -85,13 +93,13 @@ int main()
     checkWin();
     if (checkWin() == 0)
     {
-        printf("Draw");
-        //goto Mark; 
+        printf("Draw \n\n\n");
+        goto Mark; 
     }
     else if (checkWin() == 1)
             printf("Winner");
-    else if (checkWin() == -1)
-            //printf("Continue")
+    //else if (checkWin() == -1)
+            
     
     
     //drawBoard();
@@ -116,21 +124,21 @@ void drawBoard()
 
 int checkWin()
 {
-    if (position[0] == position[1] == position [2])
+    if (position[0] == position[1] && position[1] == position [2])
         return 1;
-    else if (position[3] == position[4] == position[5])
+    else if (position[3] == position[4] && position[4] == position[5])
         return 1;
-    else if (position[6] == position[7] == position[8])
+    else if (position[6] == position[7] && position[7] == position[8])
         return 1;
-    else if (position[0] == position[4] == position[8])
+    else if (position[0] == position[4] && position[4]== position[8])
         return 1;
-    else if (position[0] == position[3] == position[6])
+    else if (position[0] == position[3] && position[3]== position[6])
         return 1;
-    else if (position[1] == position[4] == position[7])
+    else if (position[1] == position[4] && position[4] == position[7])
         return 1;
-    else if (position[2] == position[5] == position[8])
+    else if (position[2] == position[5] && position[5]== position[8])
         return 1;
-    else if (position[2] == position[4] == position[6])
+    else if (position[2] == position[4] && position[4]== position[6])
         return 1;
     else if (position[0] != '1' && position[1] != '2' && position[2] != '3' && position[3] != '4' && position[4] != '5' && position[5] != '6' && position[6] != '7' && position[7] != '8' && position[8] != '9')
         return 0;
