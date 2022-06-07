@@ -29,13 +29,15 @@ int main()
     scanf("%s", &mark);
     
     if (mark== 'X' || mark== 'x')
+    {
         mark = 'X';
         printf("Player_1 = X\nPlayer_2 = O\n");
         //player1= 'X';
-        
-    else if (mark == 'O' || mark== 'o')
+    }   
+    else if (mark == 'O' || mark== 'o') {
         mark = 'O';
         printf("Player_1 = O\nPlayer_2 = X\n");
+    }
     else {
         printf("ERROR! Enter invalid Choice\n\n");
         goto Mark;
@@ -80,7 +82,7 @@ int main()
         turn--;
         if (checkWin() == 0)
             printf("Draw");
-            goto 
+            //goto 
         if (checkWin() == 1)
             printf("Winner");
         if (checkWin() == -1)
