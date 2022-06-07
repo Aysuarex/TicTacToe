@@ -99,16 +99,18 @@ int main()
     checkWin();
     if (checkWin() == 0)
     {
-        printf("Draw \n\n\n");
+        printf("==> Game Draw \n\n\n");
         goto Mark; 
     }
-    else if (checkWin() == 1)
-            printf("Player_%d won!\n\n", player--);
-            //system("cls
-
+    else if (checkWin() == 1)   {
+            printf("\n\n\n==> Player_%d won!\n\n", player--);
+            Sleep(500);
+            exit(0);
             //turn = 1;
-    //else if (checkWin() == -1)
-            
+    }
+    else if (checkWin() == -1)
+        //continue;
+    
     
     
     //drawBoard();
