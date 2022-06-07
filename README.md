@@ -1,7 +1,5 @@
 # TicTacToe  ❌/⭕
 
-# STILL IN PROGRESS: NOT YET COMPLETED! ⛑️ 🔨
-
 
 ## Introduction :eyes: 
 This is a cool game two-player game of Tictactoe made in C language.
