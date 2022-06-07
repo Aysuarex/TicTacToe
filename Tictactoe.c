@@ -99,7 +99,7 @@ void drawBoard()
     return;
 }
 
-int checkWIn()
+int checkWin()
 {
     if (position[0] == position[1] == position [2])
         return 1;
