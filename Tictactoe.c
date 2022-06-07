@@ -18,6 +18,8 @@ int main()
     int Player_1, Player_2;
     unsigned int turn = 1;
 
+
+    Start:
     system("cls");
     printf("Welcome to TICTACTOE!\n");
     Sleep(800);
@@ -47,7 +49,11 @@ int main()
         goto Mark;
     }
 
+    //Turn: //Reference 
+      //  turn = 1;
+
     Next: //Reference Point
+    //unsigned int turn = 1;
     turn++;
     turn= (turn % 2);
     if(turn == 1)
@@ -97,7 +103,10 @@ int main()
         goto Mark; 
     }
     else if (checkWin() == 1)
-            printf("Winner");
+            printf("Player_%d won!\n\n", player--);
+            //system("cls
+
+            //turn = 1;
     //else if (checkWin() == -1)
             
     
