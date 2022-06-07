@@ -123,8 +123,6 @@ int main()
     //else if (checkWin() == -1)
         //continue;
     
-    
-    
     //drawBoard();
     goto Next;
     return 0;
