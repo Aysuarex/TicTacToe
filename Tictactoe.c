@@ -82,7 +82,7 @@ int main()
         turn--;
         if (checkWin() == 0)
             printf("Draw");
-            //goto 
+            goto Mark: 
         if (checkWin() == 1)
             printf("Winner");
         if (checkWin() == -1)
@@ -133,16 +133,3 @@ int checkWin()
     else 
         return -1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
