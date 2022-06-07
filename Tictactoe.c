@@ -98,9 +98,35 @@ void drawBoard()
     return;
 }
 
-/*int checkWIn()
+int checkWIn()
 {
-
+    if position[0] == position[1] == position [2]
+        return 1;
+    else if position[3] == position[4] == position[5]
+        return 1;
+    else if position[6] == position[7] == position[8]
+        return 1;
+    else if position[0] == position[4] == position[8]
+        return 1;
+    else if position[0] == position[3] == position[6]
+        return 1;
+    else if position[1] == position[4] == position[7]
+        return 1;
+    else if position[3] == position[4] == position[5]
+        return 1;
 
     return 0;
-}*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
