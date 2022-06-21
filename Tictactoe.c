@@ -1,6 +1,6 @@
 /**
  * @file Tictactoe.c
- * @author your name (you@domain.com)
+ * @author Suara Ayomide (aysuarex@gmail.com)
  * 
  * @brief A two-player game of Tictactoe between two people, taking turns
  * 
