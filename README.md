@@ -1,5 +1,7 @@
 # TicTacToe  ❌.⭕
 
+Under Construction ⛑️⚒️
+
 # Introduction :eyes: 
 This is a cool two-player game of Tictactoe made in C language.
 
@@ -10,5 +12,6 @@ This is a cool two-player game of Tictactoe made in C language.
 * The first player to arrange three of their marks on a straight line across the board then wins the game.
 
 Later versions of this project will feature a "Play against Computer" Mode 🎊
+
 
 ### Project By [Suara Ayomide](https://twitter.com/aysuarex)
