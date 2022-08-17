@@ -1,196 +1,265 @@
-/**
- * @file Tictactoe.c
- * @author Suara Ayomide (aysuarex@gmail.com)
- * 
- * @brief A two-player game of Tictactoe between two people, taking turns
- * 
- * @date 2022-06-07
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <sys/time.h>
+//#include <ctype.h>
+#include "main.h"
 
-void drawBoard();
-int checkWin();
+char board[3][3];
+char choice;
+char player;
+char comp;
+int x, y;
 
-char position[9]= {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-int turn;
-
-int main()
+void computer()
 {
-    char mark, mark_1, mark_2;
-    char replay;
-    int choice;
-    int player;
-    int Player_1, Player_2;
-    unsigned int turn = 1;
-
-
-    Start: //Reference Point
-    position[0]= '1';
-    position[1]= '2';
-    position[2]= '3';
-    position[3]= '4';
-    position[4]= '5';
-    position[5]= '6';
-    position[6]= '7';
-    position[7]= '8';
-    position[8]= '9';
-
+    char winner;
 
     system("cls");
-    printf("==========================\nWelcome to TICTACTOE!\n");
+    printf("===============================\n"
+    "Welcome to Single player Mode!\n");
     Sleep(800);
-    drawBoard();
+    resetBoard();
 
+    drawBoard();
     Sleep(1000);
-    Mark: //Reference Point
     
     printf("-----------------------------------------------\n");
-    printf("Player_1, Enter a choice (X or O): \n\t");
-    scanf("%s", &mark);
+    printf("Select X or O:\n\t\t==> ");
+    scanf("%s", &choice);
     
-    if (mark== 'X' || mark== 'x')
+    do
     {
-        mark_1 = 'X';
-        mark_2 = 'O';
-        printf("Player_1 = X\nPlayer_2 = O\n");
-    }   
-    else if (mark == 'O' || mark== 'o') {
-        mark_1 = 'O'; 
-        mark_2= 'X';
-        printf("Player_1 = O\nPlayer_2 = X\n");
-    }
-    else {
-        printf("ERROR! Enter invalid Choice\n\n");
-        Sleep(500);
-        goto Mark;
-    }
-
-    Next: //Reference Point
-    turn++;
-    turn= (turn % 2);
-    if(turn == 1)
-        player = 1;
-    else
-        player = 2;
-
-    Position: //Reference Point
-    drawBoard();
-    Sleep(500);
-    printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
-    scanf("%d", &choice);
-    if(player == 1) 
-        mark = mark_1;
-    else
-        mark = mark_2;
-    //mark = (player ==1) ? 'X' :'O'
-    if(choice==1 && position[0]=='1')
-        position[0] = mark;
-    else if(choice ==2 && position[1] =='2')
-        position[1] = mark;
-    else if(choice ==3 && position[2] == '3')
-        position[2] = mark;
-    else if (choice ==4 && position[3] == '4')
-        position[3] = mark;
-    else if (choice ==5 && position[4] == '5')
-        position[4] = mark;
-    else if (choice ==6 && position[5] =='6')
-        position[5] = mark;
-    else if (choice ==7 && position[6] =='7')
-        position[6] = mark;
-    else if (choice ==8 && position[7] == '8')
-        position[7] = mark;
-    else if (choice ==9 && position[8] =='9') 
-        position[8] = mark;
-    else {
-        printf("ERROR! Invalid Option\n");
-        turn--;
-    }
-    checkWin();
-    if (checkWin() == 0)
+        if (choice == 'x' || choice == 'X')
     {
-        drawBoard();
-        printf("==> Game Draw \n\n\n");
-        Sleep(500);
+        //choice = toupper(choice);
+        player = 'X';
+        comp = 'O';
+        printf("\nPlayer = X\nComputer = O\n");
+        break;
+    }
+    else if (choice == 'o' || choice == 'O')
+    {
+        player = 'O';
+        comp = 'X';
+        printf("\nPlayer = O\nComputer = X\n");
+        break;
+    }
+    else
+    {
+        printf("\nERROR! Invalid Input\n");
+    }
 
-        Replay:
-        printf("Do you want to play again(Y/N)?  ");
-        scanf("%s", &replay);
-        
-        if (replay == 'Y' || replay == 'y') {
-            goto Start;
-        }
-        else if (replay == 'N' || replay == 'n') {
-            printf("\nGame Over!\n");
-            exit(0);
-        }  else {
-            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
-            Sleep(500);
-            goto Replay;
-        }
+    } while ((choice != 'X') && (choice != '0'));
+    
+
+    if (checkFreeSpaces() > 0) //if there are free spaces on the board
+    {
+        playerMove();
     }
-    else if (checkWin() == 1)   {
-        drawBoard();
-        printf("\n\n\n==> Player_%d won!\n\n", player--);
-        Sleep(500);
-        
-        printf("Do you want to play again(Y/N)?  ");
-        scanf("%s", &replay);
-        
-        if (replay == 'Y' || replay == 'y') {
-            goto Start;
-        }
-        else if (replay == 'N' || replay == 'n') {
-            printf("\nGame Over!\n");
-            exit(0);
-        }
-        else {
-            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
-            Sleep(500);
-            goto Replay;
-        }
+    else //if there are no free spaces on the board
+    {
+        printWinner(' ');
     }
-    goto Next;
-    return 0;
+    winner = checkWinner();
+
+    if (checkFreeSpaces() > 0) //if there are free spaces on the board
+    {
+        computerMove();
+    }
+    else //if there are no free spaces on the board
+    {
+        printWinner(' ');
+    }
+    winner = checkWinner();
+
+    printWinner(winner);
+
+    printf("Do you Wish to play again?: ");
+    printf("\n\n");
+    return;
 }
 
-void drawBoard()
+void printBoard()
 {
     printf("\t\t\t\t\t\t      |      |      \n");
-    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[0], position[1], position[2]);
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", board[0][0], board[0][1], board[0][2]);
     printf("\t\t\t\t\t\t______|______|______\n");
     printf("\t\t\t\t\t\t      |      |      \n");
-    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[3], position[4], position[5]);
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", board[1][0], board[1][1], board[1][2]);
     printf("\t\t\t\t\t\t______|______|______\n");
     printf("\t\t\t\t\t\t      |      |      \n");
-    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[6], position[7], position[8]);
+    printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", board[2][0], board[2][1], board[2][2]);
     printf("\t\t\t\t\t\t      |      |      \n");
 
     return;
 }
 
-int checkWin()
+int resetBoard() //makes all the spaces on the board empty
 {
-    if (position[0] == position[1] && position[1] == position [2])
-        return 1;
-    else if (position[3] == position[4] && position[4] == position[5])
-        return 1;
-    else if (position[6] == position[7] && position[7] == position[8])
-        return 1;
-    else if (position[0] == position[4] && position[4]== position[8])
-        return 1;
-    else if (position[0] == position[3] && position[3]== position[6])
-        return 1;
-    else if (position[1] == position[4] && position[4] == position[7])
-        return 1;
-    else if (position[2] == position[5] && position[5]== position[8])
-        return 1;
-    else if (position[2] == position[4] && position[4]== position[6])
-        return 1;
-    else if (position[0] != '1' && position[1] != '2' && position[2] != '3' && position[3] != '4' && position[4] != '5' && position[5] != '6' && position[6] != '7' && position[7] != '8' && position[8] != '9')
-        return 0;
-    else 
-        return -1;
+    for (int i=0; i<3; i++)
+    {
+        for (int j=0; j<3; j++)
+        {
+            board[i][j] = ' ';
+        }
+    }
+    return 0;
+}
+
+int checkFreeSpaces()
+{
+    int freespaces = 9;
+
+    for (int i=0; i<3; i++)
+        for (int j=0; j<3; j++)
+            if (board[i][j] != ' ')
+            {
+                freespaces--;
+            }
+    return freespaces;
+}
+
+void playerMove()
+{
+    do
+    {
+        printf("Where do you wish to play?(1-9): ");
+        scanf("%s", &choice);
+
+        if (choice = '1')
+        {
+            x = 0;
+            y = 0;
+        }
+        else if (choice = '2')
+        {
+            x = 0;
+            y = 1;
+        }
+        else if (choice = '3')
+        {
+            x = 0;
+            y = 2;
+        }
+        else if (choice = '4')
+        {
+            x = 1;
+            y = 0;
+        }
+        else if (choice = '5')
+        {
+            x = 1;
+            y = 1;
+        }
+        else if (choice = '6')
+        {
+            x = 1;
+            y = 2;
+        }
+        else if (choice = '7')
+        {
+            x = 2;
+            y = 0;
+        }
+        else if (choice = '8')
+        {
+            x = 2;
+            y = 1;
+        }
+        else if (choice = '9')
+        {
+            x = 2;
+            y = 2;
+        }
+        else
+        {
+            printf("ERROR! Invalid Option\n");
+        }
+
+    if (board[x][y] != ' ')
+    {
+        printf("ERROR! Occupied");
+    }
+    else
+    {
+        board[x][y] = player; 
+        //if the position is free, put the player's token there
+        break;
+    }
+
+    } while (board[x][y] == ' '); 
+    /*keep asking player to input another choice
+    if the postion they pick is not empty*/
+
+    return;
+}
+
+void computerMove()
+{    
+    do
+    {
+        srand(time(NULL));
+        x= rand() % 3;
+        y= rand() % 3;
+
+        if (board[x][y] == ' ')
+        {
+            board[x][y] = comp; 
+            //if the postion is free, put the computer's token there
+            break;
+        }
+        else
+        {
+            continue;
+        }
+    } while (board[x][y] != ' '); 
+    /*if that postion is occupued, keep generating a random position on
+    the board until a free space is found*/
+
+    return;
+}
+
+char checkWinner()
+{
+    //check rows
+    for(int i=0; i<3; i++)
+        if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2]))
+        {
+            return board[i][0]; 
+        }
+
+    //check columns
+    for(int j=0; j<3; j++)
+        if ((board[0][j] == board[1][j]) && (board[1][j] == board[2][j]))
+        {
+            return board[0][j];
+        }
+    
+    //check diagonals
+    if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]))
+    {
+        return board[0][0];
+    }
+    if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]))
+    {
+        return board[0][2];
+    }
+}
+
+void printWinner()
+{
+    if (checkWinner() == player)
+    {
+        printf("YOU WIN!");
+    }
+    else if (checkWinner() == comp)
+    {
+        printf("YOU LOSE!");
+    }
+    else
+    {
+        printf("Draw!\n");
+    }
+    return;
 }
