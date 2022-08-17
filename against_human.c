@@ -10,24 +10,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
-
-void drawBoard();
-int checkWin();
-
+#include "main.h"
 char position[9]= {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int turn;
 
-int main()
+void human()
 {
     char mark, mark_1, mark_2;
     char replay;
-    int choice;
+    char choice;
     int player;
     int Player_1, Player_2;
     unsigned int turn = 1;
 
-
     Start: //Reference Point
+    //Placeholders on game board
     position[0]= '1';
     position[1]= '2';
     position[2]= '3';
@@ -38,9 +35,8 @@ int main()
     position[7]= '8';
     position[8]= '9';
 
-
     system("cls");
-    printf("==========================\nWelcome to TICTACTOE!\n");
+    printf("===============================\nWelcome to Multiplayer Mode!\n");
     Sleep(800);
     drawBoard();
 
@@ -80,29 +76,29 @@ int main()
     drawBoard();
     Sleep(500);
     printf("\nPlayer_%d's turn. Enter a position to play (1-9): \n\t", player);
-    scanf("%d", &choice);
+    scanf("%s", &choice);
     if(player == 1) 
         mark = mark_1;
     else
         mark = mark_2;
     //mark = (player ==1) ? 'X' :'O'
-    if(choice==1 && position[0]=='1')
+    if(choice=='1' && position[0]=='1')
         position[0] = mark;
-    else if(choice ==2 && position[1] =='2')
+    else if(choice =='2' && position[1] =='2')
         position[1] = mark;
-    else if(choice ==3 && position[2] == '3')
+    else if(choice =='3' && position[2] == '3')
         position[2] = mark;
-    else if (choice ==4 && position[3] == '4')
+    else if (choice =='4' && position[3] == '4')
         position[3] = mark;
-    else if (choice ==5 && position[4] == '5')
+    else if (choice =='5' && position[4] == '5')
         position[4] = mark;
-    else if (choice ==6 && position[5] =='6')
+    else if (choice =='6' && position[5] =='6')
         position[5] = mark;
-    else if (choice ==7 && position[6] =='7')
+    else if (choice =='7' && position[6] =='7')
         position[6] = mark;
-    else if (choice ==8 && position[7] == '8')
+    else if (choice =='8' && position[7] == '8')
         position[7] = mark;
-    else if (choice ==9 && position[8] =='9') 
+    else if (choice =='9' && position[8] =='9') 
         position[8] = mark;
     else {
         printf("ERROR! Invalid Option\n");
@@ -115,7 +111,7 @@ int main()
         printf("==> Game Draw \n\n\n");
         Sleep(500);
 
-        Replay:
+        Replay: //Reference point
         printf("Do you want to play again(Y/N)?  ");
         scanf("%s", &replay);
         
@@ -124,7 +120,7 @@ int main()
         }
         else if (replay == 'N' || replay == 'n') {
             printf("\nGame Over!\n");
-            exit(0);
+            return;
         }  else {
             printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
             Sleep(500);
@@ -144,7 +140,7 @@ int main()
         }
         else if (replay == 'N' || replay == 'n') {
             printf("\nGame Over!\n");
-            exit(0);
+            return;
         }
         else {
             printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
@@ -153,7 +149,7 @@ int main()
         }
     }
     goto Next;
-    return 0;
+    return;
 }
 
 void drawBoard()
