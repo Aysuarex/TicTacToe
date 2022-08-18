@@ -20,9 +20,9 @@ int main()
     scanf("%s", &choice);
 
     if (choice == 'A' || choice == 'a')
-        computer();
+        singlePlayer();
     else if (choice == 'B' || choice == 'b')
-        human();
+        multiPlayer();
     else if (choice == 'X' || choice == 'x')
     {
         printf("\nBYE! Come Back Soon\n");
