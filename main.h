@@ -11,10 +11,10 @@ int checkWin();
 void computer();
 void computerMove();
 void playerMove();
-int resetBoard();
+void resetBoard();
 void printBoard();
 char checkWinner();
-void printWinner();
+void printWinner(char);
 int checkFreeSpaces();
 
 
