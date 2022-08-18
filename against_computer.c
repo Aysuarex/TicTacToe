@@ -1,33 +1,47 @@
+/**
+ * @file against_computer.c
+ * @author Ayomide Suara (aysuarex@gmail.com)
+ * @brief 
+ * 
+ * @date 2022-08-18
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
 #include <sys/time.h>
-//#include <ctype.h>
+#include <ctype.h>
 #include "main.h"
 
 char board[3][3];
 char choice;
-//char player;
-//char comp;
+char player;
+char comp;
 int x, y;
 
-const char player = 'X';
-const char comp = 'O';
+//const char player = 'X';
+//const char comp = 'O';
 
 
-void computer()
+void singlePlayer()
 {
-    char winner; //or remove the = ''
+    char winner;
     int response;
 
-/*
+
     do
-    {    
-        printf("-----------------------------------------------\n");
+    {
+        Sleep(1200);    
+        system("cls");
+        printf("===============================\n"
+        "Welcome to Single player Mode!\n");
+        drawBoard();
+        printf("\n-----------------------------------------------\n");
         printf("Select X or O:\n\t\t==> ");
         scanf("%s", &choice);
     
- 
+
         if (choice == 'x' || choice == 'X')
         {
         //choice = toupper(choice);
@@ -50,31 +64,34 @@ void computer()
 
     } while ((choice != 'X') && (choice != '0'));
     
-*/
+
     do
     {
-        system("cls");
-        printf("===============================\n"
-        "Welcome to Single player Mode!\n");
-        drawBoard();
+        //system("cls");
+        //printf("===============================\n"
+        //"Welcome to Single player Mode!\n");
+        //drawBoard();
         Sleep(1800);
         system("cls");
-       
+    
         drawBoard();
         printf("\nYour turn! Where do you wish to play?(1-9): ");
 
-        Sleep(2000);
+        Sleep(1000);
         system("cls");
 
         winner = ' ';
         response = ' ';
         resetBoard();
 
-        while (winner == ' '  && checkFreeSpaces() != 0) /* why not ' ' */
+        while (winner == ' '  && checkFreeSpaces() != 0)
         {
-            printBoard(); //try drawBoard
+            
+            system("cls");
+            printBoard();
             //Sleep(800);
 
+            //system("cls");
             playerMove();
             //check for Winner everytime after player's turn
             winner = checkWinner();
@@ -82,14 +99,14 @@ void computer()
             //once there's a winner or once we run out of space on the board
                 break;
             
+            Sleep(1000);
+            //system("cls");
             computerMove();
             //check again for Winner after computer's turn
             winner = checkWinner();
             if (winner != ' ' || checkFreeSpaces() == 0) //''
             //once there's a winner or once we run out of space on the board
                 break;
-
-            //printBoard();
         }
 
         printBoard();
@@ -97,7 +114,7 @@ void computer()
 
         printf("\nDo you wish to play again? (Y/N): ");
         scanf("%s", &response);
-        //response = toupper(response);
+        response = toupper(response);
         
     } while (response == 'Y');
 
@@ -149,6 +166,7 @@ void playerMove()
 {
     do
     {
+        Turn:
         printf("\nYour turn! Where do you wish to play?(1-9): ");
         scanf("%s", &choice);
 
@@ -200,11 +218,13 @@ void playerMove()
         else
         {
             printf("ERROR! Invalid Option\n");
+            goto Turn;
         }
 
         if (board[x][y] != ' ')
         {
             printf("ERROR! Occupied\n");
+            goto Turn;
         }
         else
         {
@@ -217,14 +237,14 @@ void playerMove()
     /*keep asking player to input another choice
     if the postion they pick is not empty*/
     
-    printBoard();
+    //printBoard();
     return;
 }
 
 void computerMove()
 {    
-    printf("Computer's turn, please wait...\n");
-    Sleep(2000);
+    printf("\n\nComputer's turn, please wait...\n");
+    Sleep(500);
     do
     {
         srand(time(NULL));
@@ -252,24 +272,28 @@ char checkWinner()
 {
     //check rows
     for(int i=0; i<3; i++)
-        if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2]))
+    {
+        if ((board[i][0] == board[i][1]) && (board[i][1] == board[i][2]) && (board[i][0] == board[i][2]))
         {
             return board[i][0]; 
         }
+    }
 
     //check columns
     for(int j=0; j<3; j++)
-        if ((board[0][j] == board[1][j]) && (board[1][j] == board[2][j]))
+    {
+        if ((board[0][j] == board[1][j]) && (board[1][j] == board[2][j]) && (board[0][j] == board[2][j]) )
         {
             return board[0][j];
         }
+    }
     
     //check diagonals
-    if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]))
+    if ((board[0][0] == board[1][1]) && (board[1][1] == board[2][2]) && (board[0][0] == board[2][2]))
     {
         return board[0][0];
     }
-    if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]))
+    if ((board[0][2] == board[1][1]) && (board[1][1] == board[2][0]) && (board[0][2] == board[2][0]))
     {
         return board[0][2];
     }
@@ -277,17 +301,17 @@ char checkWinner()
 
 void printWinner(char winner)
 {
-    if (checkWinner() == player)
+    if (winner == player)
     {
-        printf("YOU WIN!");
+        printf("\t==> YOU WIN!\n\n");
     }
-    else if (checkWinner() == comp)
+    else if (winner == comp)
     {
-        printf("YOU LOSE!");
+        printf("==> YOU LOSE!\n\n");
     }
     else
     {
-        printf("Draw!\n");
+        printf("==> Draw!\n\n");
     }
     return;
 }
