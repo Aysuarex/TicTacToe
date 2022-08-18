@@ -3,19 +3,19 @@
 
 
 //prototypes for multiplayer mode
-void human();
+void multiPlayer();
 void drawBoard();
 int checkWin();
 
 //prototypes for single player mode
-void computer();
+void singlePlayer();
 void computerMove();
 void playerMove();
 void resetBoard();
 void printBoard();
+int checkFreeSpaces();
 char checkWinner();
 void printWinner(char);
-int checkFreeSpaces();
 
 
 #endif
