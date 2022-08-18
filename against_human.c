@@ -140,10 +140,14 @@ void human()
         }
         else if (replay == 'N' || replay == 'n') {
             printf("\nGame Over!\n");
+            Sleep(2000);
+            system("cls");
             return;
         }
         else {
-            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
+            printf("=============================\nERROR!"
+            "\nPress Y for Yes\nPress N for No\n"
+            "\n=================================\n");
             Sleep(500);
             goto Replay;
         }
