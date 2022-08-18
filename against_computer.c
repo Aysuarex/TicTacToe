@@ -7,76 +7,101 @@
 
 char board[3][3];
 char choice;
-char player;
-char comp;
+//char player;
+//char comp;
 int x, y;
+
+const char player = 'X';
+const char comp = 'O';
+
 
 void computer()
 {
-    char winner;
+    char winner; //or remove the = ''
+    int response;
 
-    system("cls");
-    printf("===============================\n"
-    "Welcome to Single player Mode!\n");
-    Sleep(800);
-    resetBoard();
-
-    drawBoard();
-    Sleep(1000);
-    
-    printf("-----------------------------------------------\n");
-    printf("Select X or O:\n\t\t==> ");
-    scanf("%s", &choice);
-    
+/*
     do
-    {
+    {    
+        printf("-----------------------------------------------\n");
+        printf("Select X or O:\n\t\t==> ");
+        scanf("%s", &choice);
+    
+ 
         if (choice == 'x' || choice == 'X')
-    {
+        {
         //choice = toupper(choice);
-        player = 'X';
-        comp = 'O';
-        printf("\nPlayer = X\nComputer = O\n");
-        break;
-    }
-    else if (choice == 'o' || choice == 'O')
-    {
-        player = 'O';
-        comp = 'X';
-        printf("\nPlayer = O\nComputer = X\n");
-        break;
-    }
-    else
-    {
-        printf("\nERROR! Invalid Input\n");
-    }
+            player = 'X';
+            comp = 'O';
+            printf("\nPlayer = X\nComputer = O\n");
+            break;
+        }
+        else if (choice == 'o' || choice == 'O')
+        {
+            player = 'O';
+            comp = 'X';
+            printf("\nPlayer = O\nComputer = X\n");
+            break;
+        }
+        else
+        {
+            printf("\nERROR! Invalid Input\n");
+        }
 
     } while ((choice != 'X') && (choice != '0'));
     
-
-    if (checkFreeSpaces() > 0) //if there are free spaces on the board
+*/
+    do
     {
-        playerMove();
-    }
-    else //if there are no free spaces on the board
-    {
-        printWinner(' ');
-    }
-    winner = checkWinner();
+        system("cls");
+        printf("===============================\n"
+        "Welcome to Single player Mode!\n");
+        drawBoard();
+        Sleep(1800);
+        system("cls");
+       
+        drawBoard();
+        printf("\nYour turn! Where do you wish to play?(1-9): ");
 
-    if (checkFreeSpaces() > 0) //if there are free spaces on the board
-    {
-        computerMove();
-    }
-    else //if there are no free spaces on the board
-    {
-        printWinner(' ');
-    }
-    winner = checkWinner();
+        Sleep(2000);
+        system("cls");
 
-    printWinner(winner);
+        winner = ' ';
+        response = ' ';
+        resetBoard();
 
-    printf("Do you Wish to play again?: ");
-    printf("\n\n");
+        while (winner == ' '  && checkFreeSpaces() != 0) /* why not ' ' */
+        {
+            printBoard(); //try drawBoard
+            //Sleep(800);
+
+            playerMove();
+            //check for Winner everytime after player's turn
+            winner = checkWinner();
+            if (winner != ' ' || checkFreeSpaces() == 0) // ''
+            //once there's a winner or once we run out of space on the board
+                break;
+            
+            computerMove();
+            //check again for Winner after computer's turn
+            winner = checkWinner();
+            if (winner != ' ' || checkFreeSpaces() == 0) //''
+            //once there's a winner or once we run out of space on the board
+                break;
+
+            //printBoard();
+        }
+
+        printBoard();
+        printWinner(winner);
+
+        printf("\nDo you wish to play again? (Y/N): ");
+        scanf("%s", &response);
+        //response = toupper(response);
+        
+    } while (response == 'Y');
+
+    system("cls");
     return;
 }
 
@@ -95,7 +120,7 @@ void printBoard()
     return;
 }
 
-int resetBoard() //makes all the spaces on the board empty
+void resetBoard() //makes all the spaces on the board empty
 {
     for (int i=0; i<3; i++)
     {
@@ -104,70 +129,70 @@ int resetBoard() //makes all the spaces on the board empty
             board[i][j] = ' ';
         }
     }
-    return 0;
+    return;
 }
 
 int checkFreeSpaces()
 {
-    int freespaces = 9;
+    int freeSpaces = 9;
 
     for (int i=0; i<3; i++)
         for (int j=0; j<3; j++)
             if (board[i][j] != ' ')
             {
-                freespaces--;
+                freeSpaces--;
             }
-    return freespaces;
+    return freeSpaces;
 }
 
 void playerMove()
 {
     do
     {
-        printf("Where do you wish to play?(1-9): ");
+        printf("\nYour turn! Where do you wish to play?(1-9): ");
         scanf("%s", &choice);
 
-        if (choice = '1')
+        if (choice == '1')
         {
             x = 0;
-            y = 0;
+            y = 0;    
         }
-        else if (choice = '2')
+        else if (choice == '2')
         {
             x = 0;
             y = 1;
         }
-        else if (choice = '3')
+        else if (choice == '3')
         {
             x = 0;
             y = 2;
         }
-        else if (choice = '4')
+        else if (choice == '4')
         {
             x = 1;
             y = 0;
         }
-        else if (choice = '5')
+        else if (choice == '5')
         {
             x = 1;
             y = 1;
         }
-        else if (choice = '6')
+        else if (choice == '6')
         {
             x = 1;
             y = 2;
         }
-        else if (choice = '7')
+        else if (choice == '7')
         {
             x = 2;
             y = 0;
         }
-        else if (choice = '8')
+        else if (choice == '8')
         {
             x = 2;
             y = 1;
         }
-        else if (choice = '9')
+        else if (choice == '9')
         {
             x = 2;
             y = 2;
@@ -177,26 +202,29 @@ void playerMove()
             printf("ERROR! Invalid Option\n");
         }
 
-    if (board[x][y] != ' ')
-    {
-        printf("ERROR! Occupied");
-    }
-    else
-    {
-        board[x][y] = player; 
-        //if the position is free, put the player's token there
-        break;
-    }
+        if (board[x][y] != ' ')
+        {
+            printf("ERROR! Occupied\n");
+        }
+        else
+        {
+            board[x][y] = player; 
+            //if the position is free, put the player's token there
+            break;
+        }
 
     } while (board[x][y] == ' '); 
     /*keep asking player to input another choice
     if the postion they pick is not empty*/
-
+    
+    printBoard();
     return;
 }
 
 void computerMove()
 {    
+    printf("Computer's turn, please wait...\n");
+    Sleep(2000);
     do
     {
         srand(time(NULL));
@@ -247,7 +275,7 @@ char checkWinner()
     }
 }
 
-void printWinner()
+void printWinner(char winner)
 {
     if (checkWinner() == player)
     {
