@@ -14,7 +14,7 @@
 char position[9]= {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int turn;
 
-void human()
+void multiPlayer()
 {
     char mark, mark_1, mark_2;
     char replay;
