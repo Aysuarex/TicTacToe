@@ -2,7 +2,9 @@
  * @file Tictactoe.c
  * @author Suara Ayomide (aysuarex@gmail.com)
  * 
- * @brief A two-player game of Tictactoe between two people, taking turns
+ * multiPlayer - Driver function for multi-player mode
+ * drawBoard - Draws the board with numbers 1-9 inscribed
+ * checkWin - funtion that defines how to win the game
  * 
  * @date 2022-06-07
  */
