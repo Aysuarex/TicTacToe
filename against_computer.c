@@ -236,7 +236,6 @@ void playerMove()
     /*keep asking player to input another choice
     if the postion they pick is not empty*/
     
-    //printBoard();
     return;
 }
 
