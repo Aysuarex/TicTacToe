@@ -28,9 +28,6 @@ char player;
 char comp;
 int x, y;
 
-//const char player = 'X';
-//const char comp = 'O';
-
 
 void singlePlayer()
 {
@@ -52,7 +49,6 @@ void singlePlayer()
 
         if (choice == 'x' || choice == 'X')
         {
-        //choice = toupper(choice);
             player = 'X';
             comp = 'O';
             printf("\nPlayer = X\nComputer = O\n");
@@ -75,10 +71,6 @@ void singlePlayer()
 
     do
     {
-        //system("cls");
-        //printf("===============================\n"
-        //"Welcome to Single player Mode!\n");
-        //drawBoard();
         Sleep(1800);
         system("cls");
     
@@ -97,9 +89,7 @@ void singlePlayer()
             
             system("cls");
             printBoard();
-            //Sleep(800);
 
-            //system("cls");
             playerMove();
             //check for Winner everytime after player's turn
             winner = checkWinner();
@@ -143,7 +133,6 @@ void printBoard()
     printf("\t\t\t\t\t\t      |      |      \n");
     printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", board[2][0], board[2][1], board[2][2]);
     printf("\t\t\t\t\t\t      |      |      \n");
-
     return;
 }
 
