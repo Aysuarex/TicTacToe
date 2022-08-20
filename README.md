@@ -1,6 +1,6 @@
 # TicTacToe  ❌.⭕
 
-Under Construction ⛑️⚒️
+# Under Construction ⛑️⚒️
 
 # Introduction :eyes: 
 This is a cool two-player game of Tictactoe made in C language.
