@@ -19,6 +19,7 @@ int main()
 
     START:
     system("cls");
+    system("color 0e");
     printf("\n"
     "     ####### ###  #####  #######    #     #####  ####### ####### #######\n"
     "        #     #  #     #    #      # #   #     #    #    #     # #       \n"
@@ -41,9 +42,15 @@ int main()
     scanf("%s", &choice);
 
     if (choice == 'A' || choice == 'a')
+    {
+        system("color 0a");
         singlePlayer();
+    }
     else if (choice == 'B' || choice == 'b')
+    {
+        system("color 0b");
         multiPlayer();
+    }
     else if (choice == 'X' || choice == 'x')
     {
         printf("\nBYE! Come Back Soon\n");
