@@ -242,7 +242,7 @@ void playerMove()
 void computerMove()
 {    
     printf("\n\nComputer's turn, please wait...\n");
-    Sleep(20);
+    Sleep(1);
     do
     {
         srand(time(NULL));
