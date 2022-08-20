@@ -1,15 +1,36 @@
+/**
+ * @file main.c
+ * @author Ayomide Suara (aysuarex@gmail.com)
+ * 
+ * main - driver function for entire game
+ * 
+ * @date 2022-08-20
+ * 
+ */
+
 #include <stdio.h>
 #include <windows.h>
 #include "main.h"
 
-char choice;
+
 int main()
 {
+    char choice;
+
     START:
     system("cls");
-    printf("\n============================\n");
-    printf("Welcome to TICTACTOE\n");
-    printf("============================\n");
+    printf("\n"
+    "     ####### ###  #####  #######    #     #####  ####### ####### #######\n"
+    "        #     #  #     #    #      # #   #     #    #    #     # #       \n"
+    "        #     #  #          #     #   #  #          #    #     # #       \n"
+    "        #     #  #          #    #     # #          #    #     # #####   \n"
+    "        #     #  #          #    ####### #          #    #     # #       \n"
+    "        #     #  #     #    #    #     # #     #    #    #     # #       \n"
+    "        #    ###  #####     #    #     #  #####     #    ####### ####### \n"
+    );
+    printf("\n ===========================\n");
+    printf("\t WELCOME!\n");
+    printf(" ===========================\n");
     BEGIN:
     Sleep(500);
     printf("\n============================\n");
