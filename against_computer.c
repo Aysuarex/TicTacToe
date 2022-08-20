@@ -1,7 +1,15 @@
 /**
  * @file against_computer.c
  * @author Ayomide Suara (aysuarex@gmail.com)
- * @brief 
+ * 
+ * singleplayer - driver function for single player mode
+ * computerMove - controls how computer plays
+ * playerMove - set of instructions for player's input
+ * resetBoard - function to reset the board after each round
+ * printBoard - draws and prints the board
+ * checkFreeSpaces - checks if there are free spaces on the board
+ * checkWinner - function that defines how to win the game
+ * printWinner - checks who the winner is, and prints the result
  * 
  * @date 2022-08-18
  * 
@@ -118,6 +126,8 @@ void singlePlayer()
         
     } while (response == 'Y');
 
+    printf("\nGame Over!\n");
+    Sleep(1200);
     system("cls");
     return;
 }
@@ -244,7 +254,7 @@ void playerMove()
 void computerMove()
 {    
     printf("\n\nComputer's turn, please wait...\n");
-    Sleep(500);
+    Sleep(20);
     do
     {
         srand(time(NULL));
