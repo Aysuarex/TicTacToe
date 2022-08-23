@@ -5,7 +5,7 @@
 # Introduction :eyes: 
 This is a cool two-player game of Tictactoe made in C language.
 
-## How It works :rocket:
+## How It Works :rocket:
 
 * There are two players and the first player is asked to make a choice between X and O. The player's choice is then recorded and the other player is automatically given the second choice.
 * The program draws the Tictactoe board and the players are asked to select a position to place their mark (X or O). 
