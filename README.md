@@ -50,7 +50,7 @@ To enjoy this game:
    ![Screenshot (81)](https://user-images.githubusercontent.com/99369085/176964277-c6fbc1ea-ae78-4155-bd4b-43cf4c7770fb.png)
 
 
-2. After you've downloaded the game folder on your computer using any of the methods above, simply open the folder and click on the executable (application) `maze` file to launch:
+2. After you've downloaded the game folder on your computer using any of the methods above, simply open the folder and click on the executable (application) `Tictactoe` file to launch:
 
   ![Screenshot (82)](https://user-images.githubusercontent.com/99369085/176964298-4a8b3588-a8b7-416b-8fac-9841e2aebfb7.png)
   
