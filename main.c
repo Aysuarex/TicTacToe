@@ -54,6 +54,7 @@ printf(
     {
         printf("\nBYE! Come Back Soon\n");
         Sleep(2000);
+        system("color 07");
         exit(0);
     }
     else 
