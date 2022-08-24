@@ -1,6 +1,6 @@
 # TicTacToe  ❌.⭕
 
-# Introduction :eyes: 
+## Introduction :eyes: 
 A cool game of Tictactoe written in C programming Language.
 
 ## About The Game 🎮
