@@ -38,9 +38,13 @@ To enjoy this game:
 
 1. First, you want to download the folder for the game on your compuuter. This can be done easily using a number of methods. Here's two of them: 
    * You can either choose to download the zip file for this repo and unzip it on your computer, or 
-   * You could clone this repo to your computer.
+   * You could clone this repo to your computer:
+        ```bash
+        git clone https://github.com/aysuarex/tictactoe
+        ```
    
-   To download the zip file, click on the green button that says `Code`:
+   To download the zip file, click on the green button that says `Code`:\
+   (Note that this pictures are merely examples of how this can be done, using another repo)
    
    ![Screenshot (80)](https://user-images.githubusercontent.com/99369085/176964248-225b5ffa-5842-4e19-8c55-ddfc7f6efd36.png)
    
