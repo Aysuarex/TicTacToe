@@ -5,6 +5,7 @@
 //prototypes for multiplayer mode
 void multiPlayer();
 void drawBoard();
+void placeholder();
 int checkWin();
 
 //prototypes for single player mode
