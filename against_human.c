@@ -3,7 +3,8 @@
  * @author Suara Ayomide (aysuarex@gmail.com)
  * 
  * multiPlayer - Driver function for multi-player mode
- * drawBoard - Draws the board with numbers 1-9 inscribed
+ * drawBoard - Draws the board for the player tokens
+ * placeholder(); - Draws the board with the numbers 1-9 inscribed
  * checkWin - funtion that defines how to win the game
  * 
  * @date 2022-06-07
@@ -25,22 +26,22 @@ void multiPlayer()
     int Player_1, Player_2;
     unsigned int turn = 1;
 
-    Start: //Reference Point
-    //Placeholders on game board
-    position[0]= '1';
-    position[1]= '2';
-    position[2]= '3';
-    position[3]= '4';
-    position[4]= '5';
-    position[5]= '6';
-    position[6]= '7';
-    position[7]= '8';
-    position[8]= '9';
-
     system("cls");
     printf("===============================\nWelcome to Multiplayer Mode!\n");
     Sleep(800);
-    drawBoard();
+    placeholder();
+
+    Start: //Reference Point
+    //Placeholders on game board
+    position[0]= ' ';
+    position[1]= ' ';
+    position[2]= ' ';
+    position[3]= ' ';
+    position[4]= ' ';
+    position[5]= ' ';
+    position[6]= ' ';
+    position[7]= ' ';
+    position[8]= ' ';
 
     Sleep(1000);
     Mark: //Reference Point
@@ -84,23 +85,23 @@ void multiPlayer()
     else
         mark = mark_2;
     //mark = (player ==1) ? 'X' :'O'
-    if(choice=='1' && position[0]=='1')
+    if(choice=='1' && position[0]==' ')
         position[0] = mark;
-    else if(choice =='2' && position[1] =='2')
+    else if(choice =='2' && position[1] ==' ')
         position[1] = mark;
-    else if(choice =='3' && position[2] == '3')
+    else if(choice =='3' && position[2] == ' ')
         position[2] = mark;
-    else if (choice =='4' && position[3] == '4')
+    else if (choice =='4' && position[3] == ' ')
         position[3] = mark;
-    else if (choice =='5' && position[4] == '5')
+    else if (choice =='5' && position[4] == ' ')
         position[4] = mark;
-    else if (choice =='6' && position[5] =='6')
+    else if (choice =='6' && position[5] ==' ')
         position[5] = mark;
-    else if (choice =='7' && position[6] =='7')
+    else if (choice =='7' && position[6] ==' ')
         position[6] = mark;
-    else if (choice =='8' && position[7] == '8')
+    else if (choice =='8' && position[7] == ' ')
         position[7] = mark;
-    else if (choice =='9' && position[8] =='9') 
+    else if (choice =='9' && position[8] ==' ') 
         position[8] = mark;
     else {
         printf("ERROR! Invalid Option\n");
@@ -118,13 +119,19 @@ void multiPlayer()
         scanf("%s", &replay);
         
         if (replay == 'Y' || replay == 'y') {
+            system("cls");
             goto Start;
         }
         else if (replay == 'N' || replay == 'n') {
             printf("\nGame Over!\n");
+            Sleep(2000);
+            system("cls");
             return;
         }  else {
-            printf("=============================\nERROR!\nPress Y for Yes\nPress N for No\n\n=================================\n");
+            printf("=============================\nERROR!\n"
+            "Press Y for Yes\n"
+            "Press N for No\n"
+            "\n=================================\n");
             Sleep(500);
             goto Replay;
         }
@@ -138,6 +145,7 @@ void multiPlayer()
         scanf("%s", &replay);
         
         if (replay == 'Y' || replay == 'y') {
+            system("cls");
             goto Start;
         }
         else if (replay == 'N' || replay == 'n') {
@@ -148,7 +156,8 @@ void multiPlayer()
         }
         else {
             printf("=============================\nERROR!"
-            "\nPress Y for Yes\nPress N for No\n"
+            "\nPress Y for Yes\n"
+            "Press N for No\n"
             "\n=================================\n");
             Sleep(500);
             goto Replay;
@@ -169,29 +178,42 @@ void drawBoard()
     printf("\t\t\t\t\t\t      |      |      \n");
     printf("\t\t\t\t\t\t   %c  |   %c  |  %c  \n", position[6], position[7], position[8]);
     printf("\t\t\t\t\t\t      |      |      \n");
+    return;
+}
 
+void placeholder()
+{
+    printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   1  |   2  |  3   \n");
+    printf("\t\t\t\t\t\t______|______|______\n");
+    printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   4  |   5  |  6   \n");
+    printf("\t\t\t\t\t\t______|______|______\n");
+    printf("\t\t\t\t\t\t      |      |      \n");
+    printf("\t\t\t\t\t\t   7  |   8  |  9   \n");
+    printf("\t\t\t\t\t\t      |      |      \n");
     return;
 }
 
 int checkWin()
 {
-    if (position[0] == position[1] && position[1] == position [2])
+    if (position[0] == position[1] && position[1] == position [2] && position[1] != ' ')
         return 1;
-    else if (position[3] == position[4] && position[4] == position[5])
+    else if (position[3] == position[4] && position[4] == position[5] && position[4] != ' ')
         return 1;
-    else if (position[6] == position[7] && position[7] == position[8])
+    else if (position[6] == position[7] && position[7] == position[8] && position[7] != ' ')
         return 1;
-    else if (position[0] == position[4] && position[4]== position[8])
+    else if (position[0] == position[4] && position[4]== position[8] && position[4] != ' ')
         return 1;
-    else if (position[0] == position[3] && position[3]== position[6])
+    else if (position[0] == position[3] && position[3]== position[6] && position[3] != ' ')
         return 1;
-    else if (position[1] == position[4] && position[4] == position[7])
+    else if (position[1] == position[4] && position[4] == position[7] && position[4] != ' ')
         return 1;
-    else if (position[2] == position[5] && position[5]== position[8])
+    else if (position[2] == position[5] && position[5]== position[8] && position[5] != ' ')
         return 1;
-    else if (position[2] == position[4] && position[4]== position[6])
+    else if (position[2] == position[4] && position[4]== position[6] && position[4] != ' ')
         return 1;
-    else if (position[0] != '1' && position[1] != '2' && position[2] != '3' && position[3] != '4' && position[4] != '5' && position[5] != '6' && position[6] != '7' && position[7] != '8' && position[8] != '9')
+    else if (position[0] != ' ' && position[1] != ' ' && position[2] != ' ' && position[3] != ' ' && position[4] != ' ' && position[5] != ' ' && position[6] != ' ' && position[7] != ' ' && position[8] != ' ')
         return 0;
     else 
         return -1;
