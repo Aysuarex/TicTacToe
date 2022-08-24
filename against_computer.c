@@ -34,19 +34,17 @@ void singlePlayer()
     char winner;
     int response;
 
-
     do
     {
         Sleep(1000);
         system("cls");
         printf("===============================\n"
         "Welcome to Single player Mode!\n");
-        drawBoard();
+        placeholder();
         printf("\n-----------------------------------------------\n");
         printf("Select X or O:\n\t\t==> ");
         scanf("%s", &choice);
     
-
         if (choice == 'x' || choice == 'X')
         {
             player = 'X';
@@ -74,7 +72,7 @@ void singlePlayer()
         Sleep(1800);
         system("cls");
     
-        drawBoard();
+        placeholder();
         printf("\nYour turn! Where do you wish to play?(1-9): ");
 
         Sleep(500);
