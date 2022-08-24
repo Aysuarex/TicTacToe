@@ -37,30 +37,18 @@ There are two Modes to choose from:
 To enjoy this game:
 
 1. First, you want to download the folder for the game on your compuuter. This can be done easily using a number of methods. Here's two of them: 
-   * You can either choose to download the zip file for this repo and unzip it on your computer, or 
+   * You can either choose to [download](https://github.com/Aysuarex/TicTacToe/archive/refs/heads/main.zip) the zip 
+   file for this repo and unzip it on your computer, or 
    * You could clone this repo to your computer:
         ```bash
         git clone https://github.com/aysuarex/tictactoe
         ```
    
-   To download the zip file, click on the green button that says `Code`:\
-   (Note that this pictures are merely examples of how this can be done, using another repo)
-   
-   ![Screenshot (80)](https://user-images.githubusercontent.com/99369085/176964248-225b5ffa-5842-4e19-8c55-ddfc7f6efd36.png)
-   
-   
-   Then Click on `Download ZIP`:
-   
-   ![Screenshot (81)](https://user-images.githubusercontent.com/99369085/176964277-c6fbc1ea-ae78-4155-bd4b-43cf4c7770fb.png)
-
-
 2. After you've downloaded the game folder on your computer using any of the methods above, simply open the folder and click on the executable (application) `Tictactoe` file to launch:
 
-  ![Screenshot (82)](https://user-images.githubusercontent.com/99369085/176964298-4a8b3588-a8b7-416b-8fac-9841e2aebfb7.png)
-  
+  ![aysuarex_tictactoe](https://user-images.githubusercontent.com/99369085/186290016-cfdbdeee-9e36-4a65-9bee-fba873e3e745.png)
 
 3. Sit back and Enjoy 😎
-
 
 ---
 ### Written and Developed in C Programming Language by [**Suara Ayomide**](https://twitter.com/aysuarex)
