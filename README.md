@@ -7,7 +7,7 @@ A cool game of Tictactoe to enjoy at your leisure .
 
 There are two Modes to choose from:
 1. Single Player Mode (against the computer)
-2. Multi-player Mode (against a friend)
+2. Multi-Player Mode (against a friend)
 
 ## How It Works :rocket:
 
