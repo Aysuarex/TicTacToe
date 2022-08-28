@@ -1,4 +1,4 @@
-# TicTacToe  ❌.⭕
+# TicTacToe  ❌_⭕
 
 ## Introduction :eyes: 
 A cool game of Tictactoe to enjoy at your leisure .
