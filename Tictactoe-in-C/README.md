@@ -36,7 +36,7 @@ There are two Modes to choose from:
 
 To enjoy this game:
 
-1. First, you want to download the folder for the game on your compuuter. This can be done easily using a number of methods. Here's two of them: 
+1. First, you want to download the folder for the game on your computer. This can be done easily using a number of methods. Here's two of them: 
    * You can either choose to [download](https://github.com/Aysuarex/TicTacToe/archive/refs/heads/main.zip) the zip 
    file for this repo and unzip it on your computer, or 
    * You could clone this repo to your computer:
@@ -44,7 +44,7 @@ To enjoy this game:
         git clone https://github.com/aysuarex/tictactoe
         ```
    
-2. After you've downloaded the game folder on your computer using any of the methods above, simply open the folder and click on the executable (application) `Tictactoe` file to launch:
+2. After you've downloaded the game folder on your computer using any of the methods above, simply open the `Tictactoe-in-C` folder and click on the executable (application) `Tictactoe` file to launch:
 
   ![aysuarex_tictactoe](https://user-images.githubusercontent.com/99369085/186290016-cfdbdeee-9e36-4a65-9bee-fba873e3e745.png)
 
