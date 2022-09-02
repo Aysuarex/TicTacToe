@@ -46,35 +46,39 @@ def main(game, x_player, o_player, print_game=True, slow_game=True):
 if __name__ == "__main__":
     os.system("cls")
     print("\nWelcome to Tic-Tac-Toe!")
+    mode = ' ' #initialised for while loop
     replay = 'Y' #initialised for while loop
-    while replay == 'Y':
-        mode = ' ' #initialised for while loop
-        while mode != 'A' and mode != 'B' and mode != 'C':
-            print("\nHow do you wish to play?")
-            print("A. Player_1 VS Player_2")
-            print("B. Player VS Easy_Computer")
-            print("C. Player VS Genius_Computer")
-            print("D. Easy_Computer VS Genius_Computer")
-            print("E. Easy_Computer_1 VS Easy_Computer_2")
-            print("F. Genius_Computer_1 VS Genius_Computer_2")
-            mode = input("\n==> ").upper()
+    while mode not in ['A', 'B', 'C', 'D', 'E', 'F', 'X']:
+        print("\nHow do you wish to play?")
+        print("A. Player_1 VS Player_2")
+        print("B. Player VS Easy_Computer")
+        print("C. Player VS Genius_Computer")
+        print("D. Easy_Computer VS Genius_Computer")
+        print("E. Easy_Computer_1 VS Easy_Computer_2")
+        print("F. Genius_Computer_1 VS Genius_Computer_2")
+        print("\nX. Exit Game")
+        mode = input("\n==> ").upper()
+        
+        if mode == 'X':
+            break
 
-
+        while replay == 'Y':
             if mode == 'A':
                 print("\nPlayer_1 = X\nPlayer_2 = O\n")
                 x_player = HumanPlayer('X')
                 o_player = HumanPlayer('O')
                 t = TicTacToe()
                 main(t, x_player, o_player, print_game=True, slow_game=False)
-
             elif mode == 'B':
                 choice = input("\nOK... Do you want to be X or O? ").upper()
                 if choice == 'O':
+                    print("\nEasy_Computer = X\nPlayer = O\n")
                     o_player = HumanPlayer('O')
                     x_player = RandomComputerPlayer('X')
                     t = TicTacToe()
                     main(t, x_player, o_player, print_game=True, slow_game=False)
                 else:
+                    print("\nPlayer = X\nEasy_Computer = O\n")
                     x_player = HumanPlayer('X')
                     o_player = RandomComputerPlayer('O')
                     t = TicTacToe()
@@ -82,11 +86,13 @@ if __name__ == "__main__":
             elif mode == 'C':
                 choice = input("\nOK... Do you want to be X or O? ").upper()
                 if choice == 'O':
+                    print("\nGenius_Computer = X\nPlayer = O\n")
                     o_player = HumanPlayer('O')
                     x_player = GeniusComputerPlayer('X')
                     t = TicTacToe()
                     main(t, x_player, o_player, print_game=True, slow_game=False)
                 else:
+                    print("\nPlayer = X\nGenius_Computer = O\n")
                     x_player = HumanPlayer('X')
                     o_player = GeniusComputerPlayer('O')
                     t = TicTacToe()
@@ -94,6 +100,7 @@ if __name__ == "__main__":
             elif mode == 'D':
                 print("\nSit Back, Relax and Enjoy the Show :)")
                 time.sleep(2.5)
+                print("Easy_Computer = X\nGenius_Computer = O\n")
                 x_player = RandomComputerPlayer('X')
                 o_player = GeniusComputerPlayer('O')
                 t = TicTacToe()
@@ -101,6 +108,7 @@ if __name__ == "__main__":
             elif mode == 'E':
                 print("\nSit Back, Relax and Enjoy the Show :)")
                 time.sleep(2.5)
+                print("Easy_Computer = X\nEasy_Computer = O\n")
                 x_player = RandomComputerPlayer('X')
                 o_player = RandomComputerPlayer('O')
                 t = TicTacToe()
@@ -108,14 +116,20 @@ if __name__ == "__main__":
             elif mode == 'F':
                 print("\nSit Back, Relax and Enjoy the Show :)")
                 time.sleep(2.5)
+                print("Genius_Computer = X\nGenius_Computer = O\n")
                 x_player = GeniusComputerPlayer('X')
                 o_player = GeniusComputerPlayer('O')
                 t = TicTacToe()
                 main(t, x_player, o_player, print_game=True, slow_game=True)
             else:
                 print("Invalid choice. Try again")
+
+            replay = input("\nDo you want to play again?(Y/N): ").upper()
+            os.system("cls")
         #end of while loop
-        replay = input("\nDo you want to play again?(Y/N): ").upper()
-        os.system("cls")
+
+        mode = ' '
+        replay = 'Y'        
     #end of while loop
-    print("\n\n\n\n\t\tBye! Come Back Soon\n\n\n")
+
+    print("\n\n\n\n\t\tBye! Come Back Soon\n\n\n\n")
