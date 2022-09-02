@@ -115,7 +115,7 @@ class GeniusComputerPlayer(Player):  # computer using minimax
         return best # {'postion':  , 'score':  } 
 
     def get_move(self, game):
-        if len(game.available_moves() == 9):  # first move is random if board is free
+        if len(game.available_moves()) == 9:  # first move is random if board is free
             spot = random.choice(game.available_moves())
         else:
             spot = self.minimax(game, self.token)['position']  # this is because minimax
@@ -123,4 +123,3 @@ class GeniusComputerPlayer(Player):  # computer using minimax
                                                     # and score keys but we only need the value 
                                                     # on the position
         return spot
-
