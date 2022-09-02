@@ -54,6 +54,16 @@ class GeniusComputerPlayer(Player):  # computer using minimax
     def __init__ (self, token):
         super().__init__(token)
 
+    def get_move(self, game):
+        if len(game.available_moves()) == 9:  # first move is random if board is free
+            spot = random.choice(game.available_moves())
+        else:
+            spot = self.minimax(game, self.token)['position']  # this is because minimax
+                                                    # returns a dictionary with both position 
+                                                    # and score keys but we only need the value 
+                                                    # on the position
+        return spot
+
     # minimax outputs a dictionary containing the best possible postion after analysis
     #  and the score attached to that position according to the analysis made.
     #  The analysis uses the formula 1(x+1) or -1(x+1) or 0(x+1) depending on whether
@@ -73,11 +83,11 @@ class GeniusComputerPlayer(Player):  # computer using minimax
         # 1. The opponent won in the previous move
         if state.current_winner == other_player:
             return {'position': None,     # the best position for us to play in
-                    'score': (1*(state.num_empty_squares()+1)) if other_player == max_player
-                              else (-1*(state.num_empty_squares()+1))}
+                    'score': (1*(state.num_empty_spots()+1)) if other_player == max_player
+                              else (-1*(state.num_empty_spots()+1))}
 
-        # 2. Game is presently a draw (no empty squares)
-        elif not state.empty_squares():
+        # 2. Game is presently a draw (no empty spots)
+        elif not state.empty_spots():
             return {'position': None,
                     'score': 0}  # 0(x+1)
 
@@ -112,14 +122,4 @@ class GeniusComputerPlayer(Player):  # computer using minimax
                     best = sim_score #replace best
 
         #end of for loop
-        return best # {'postion':  , 'score':  } 
-
-    def get_move(self, game):
-        if len(game.available_moves()) == 9:  # first move is random if board is free
-            spot = random.choice(game.available_moves())
-        else:
-            spot = self.minimax(game, self.token)['position']  # this is because minimax
-                                                    # returns a dictionary with both position 
-                                                    # and score keys but we only need the value 
-                                                    # on the position
-        return spot
+        return best # {'postion':  , 'score':  }
